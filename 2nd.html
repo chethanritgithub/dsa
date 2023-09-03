@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reverse Array In-Place</title>
+</head>
+<body>
+    <script>
+        function reverseArrayInPlace(arr) {
+            let start = 0;
+            let end = arr.length - 1;
+
+            while (start < end) {
+                // Swap elements at start and end
+                const temp = arr[start];
+                arr[start] = arr[end];
+                arr[end] = temp;
+                start++;
+                end--;
+            }
+        }
+
+        const myArray = [1, 2, 3, 4, 5];
+        reverseArrayInPlace(myArray);
+        console.log("Reversed array:", myArray);
+    </script>
+</body>
+</html>

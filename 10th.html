@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Stack {
+    constructor() {
+        this.items = [];
+        this.minStack = []; // Auxiliary stack to track minimum values
+    }
+
+    push(item) {
+        this.items.push(item);
+
+        // Update the minimum stack
+        if (this.minStack.length === 0 || item <= this.minStack[this.minStack.length - 1]) {
+            this.minStack.push(item);
+        }
+    }
+
+    pop() {
+        if (this.isEmpty()) {
+            throw new Error("Stack is empty");
+        }
+
+        const poppedItem = this.items.pop();
+
+        // If the popped item is the minimum, also pop it from the minimum stack
+        if (poppedItem === this.minStack[this.minStack.length - 1]) {
+            this.minStack.pop();
+        }
+
+        return poppedItem;
+    }
+
+    isEmpty() {
+        return this.items.length === 0;
+    }
+
+    getMin() {
+        if (this.minStack.length === 0) {
+            throw new Error("Stack is empty");
+        }
+
+        return this.minStack[this.minStack.length - 1];
+    }
+}
+
+// Create a stack
+const stack = new Stack();
+
+// Push elements onto the stack
+stack.push(3);
+stack.push(5);
+stack.push(2);
+stack.push(1);
+stack.push(4);
+
+// Find the smallest number
+const smallestNumber = stack.getMin();
+
+console.log("Smallest Number in the Stack:", smallestNumber);
+
+    </script>
+</body>
+</html>

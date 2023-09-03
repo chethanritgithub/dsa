@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check String Rotations</title>
+</head>
+<body>
+    <script>
+        function areRotations(str1, str2) {
+            if (str1.length !== str2.length) {
+                return false;
+            }
+            const concatenatedStr = str1 + str1;
+            return concatenatedStr.includes(str2);
+        }
+
+        const string1 = "hello";
+        const string2 = "ohell";
+        const result = areRotations(string1, string2);
+
+        if (result) {
+            console.log(`${string1} and ${string2} are rotations of each other.`);
+        } else {
+            console.log(`${string1} and ${string2} are not rotations of each other.`);
+        }
+    </script>
+</body>
+</html>
